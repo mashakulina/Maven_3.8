@@ -3,42 +3,42 @@ package ru.netology.statistic;
 public class Radio {
 
     private int currentStation;
+    private int currentVolume;
 
-    public void setCurrentStation(int сurrentStation) {
-        if (сurrentStation < 0) {
-            return;
-        }
-        if (сurrentStation > 9) {
-            return;
-        }
-        this.currentStation = сurrentStation;
-    }
 
     public int getCurrentStation() {
         return currentStation;
     }
 
-    public void increaseStation() {
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0) {
+            return;
+        }
+        if (currentStation > 9) {
+            return;
+        }
+        this.currentStation = currentStation;
+    }
+
+    public void nextStation() {
         if (currentStation < 9) {
-            currentStation = currentStation + 1;
-            if (currentStation > 9) {
-                int currentStation = 0;
-                setCurrentStation(currentStation);
-            }
+            currentStation++;
+        } else {
+            currentStation = 0;
         }
     }
 
-    public void reduceStation() {
-        if (currentStation < 9) {
-            currentStation = currentStation - 1;
-            if (currentStation <= -1) {
-                int currentStation = 9;
-                setCurrentStation(currentStation);
-            }
+    public void prevStation() {
+        if (currentStation > 0) {
+            currentStation--;
+        } else {
+            currentStation = 9;
         }
     }
 
-    private int currentVolume;
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
 
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume < 0) {
@@ -50,19 +50,16 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
     public void increaseVolume() {
         if (currentVolume < 10) {
-            currentVolume = currentVolume + 1;
+            currentVolume++;
         }
     }
 
-    public void reduceVolume() {
-        if (currentVolume > 10) {
-            currentVolume = currentVolume - 1;
+    public void decreaseVolume() {
+        if (currentVolume > 0) {
+            currentVolume--;
         }
     }
 }
+
