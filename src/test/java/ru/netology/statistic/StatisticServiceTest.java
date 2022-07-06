@@ -9,6 +9,41 @@ public class StatisticServiceTest {
     Radio radio = new Radio();
 
     @Test
+    public void testStation() {
+        Radio station = new Radio();
+
+        radio.setCurrentStation(9);
+
+        assertEquals(9, radio.getCurrentStation());
+    }
+    @Test
+    public void testWithStationsCount() {
+        Radio station = new Radio(5);
+
+        radio.setCurrentStation(4);
+
+        assertEquals(4, radio.getCurrentStation());
+    }
+
+    @Test
+    public void testCurrentStationAboveMax() {
+        Radio station = new Radio(5);
+
+        radio.setCurrentStation(10);
+
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    public void testCurrentStationBelowMin() {
+        Radio station = new Radio(5);
+
+        radio.setCurrentStation(-1);
+
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
     void station() {
         radio.setCurrentStation(7);
 
